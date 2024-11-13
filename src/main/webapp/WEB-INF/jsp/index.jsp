@@ -13,7 +13,7 @@
         }
         nav{
             width:100%;
-            height: 60px;
+            height: 80px;
             background-color: goldenrod;
             display: flex;
             justify-content: center;
@@ -47,21 +47,28 @@
             color:white;
             border: 3px solid white;
         }
-
+        h1{
+            text-align: center;
+            color:white;
+        }
+        sub{
+            color:black;
+            font-size: 1.7rem;
+        }
 
     </style>
 
 </head>
 <body>
 <nav>
-    <h1>Note Maker</h1>
+    <h1>Welcome to Note Maker <sub>aka TO-DO List</sub></h1>
 </nav>
 
 <div class="content">
-    <a href="/create">Create Note</a>
-    <a href="/AllNotes">All Notes</a>
-    <a href="/update">Update Notes</a>
-    <a href="/delete">Delete Notes</a>
+    <a href="create">Create Note</a>
+    <a href="AllNotes">All Notes</a>
+    <a href="update">Update Notes</a>
+    <a href="delete">Delete Notes</a>
 </div>
 </body>
 </html>

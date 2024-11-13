@@ -1,27 +1,74 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
     <title>Delete Note</title>
+    <style>
+        *{
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 1.2rem;
+        }
+        body{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: white;
+        }
+        form{
+            width: 30rem;
+            height: 30rem;
+            border: 1px solid black;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: gold;
+            border-radius: 20px;
+            gap:1rem;
+        }
+        input{
+            border: 1px solid black;
+            padding:0.3rem;
+            border-radius: 0.6rem;
+        }
+        textarea{
+            border: 1px solid black;
+            padding:0.7rem;
+        }
+        button{
+            border: 1px solid black;
+            padding:0.4rem;
+            border-radius: 0.4rem;
+            cursor: pointer;
+        }
+        button:hover{
+            background-color: black;
+            color:white;
+        }
+        a{
+            color:black;
+            margin-top:2rem;
+        }
+        p{
+            color:red;
+            font-size: 1.4rem;
+        }
+    </style>
 </head>
 <body>
 
 <h2>Delete Note</h2>
 
-<!-- Display an error message if the note doesn't exist -->
-<c:if test="${not empty error}">
-    <p style="color: red;">${error}</p>
-</c:if>
-
-<p>Are you sure you want to delete this note?</p>
-
-<!-- Confirmation form for deleting the note -->
-<form action="/deleteById" method="post">
-    <input type="hidden" name="_method" value="delete"/>
-    <input type="hidden" name="id" value="${param.id}" />
+<form method="post">
+    <p>Are you sure you want to delete this note?</p>
+    <label for="id">Enter the note Id to delete the note</label>
+    <input type="text" id="id" name="id" placeholder="id" />
 
     <button type="submit">Yes, Delete</button>
-    <a href="/AllNotes">Cancel</a>
+    <a href="/index">Cancel</a>
 </form>
 
 </body>

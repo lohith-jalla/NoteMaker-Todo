@@ -31,4 +31,8 @@ public class Services {
     public void delete(Long Id){
         repo.deleteById(Id);
     }
+
+    public note getById(Long Id){
+        return repo.findById(Id).get();
+    }
 }

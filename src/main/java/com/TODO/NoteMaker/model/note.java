@@ -2,12 +2,14 @@ package com.TODO.NoteMaker.model;
 
 import jakarta.persistence.*;
 import org.springframework.boot.autoconfigure.web.WebProperties;
+import org.springframework.stereotype.Component;
 
+@Component
 @Entity
 public class note {
 
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @GeneratedValue(strategy=GenerationType.SEQUENCE)
     private Long id;
     private String title;
     private String content;

@@ -11,9 +11,11 @@ import org.springframework.web.bind.annotation.*;
 public class noteController {
 
     private final Services s;
+    private note n;
 
-    public noteController(Services s) {
+    public noteController(Services s, note n) {
         this.s = s;
+        this.n = n;
     }
 
     //HomePage ***********************************
@@ -29,8 +31,10 @@ public class noteController {
     }
 
     @PostMapping("/create")
-    public String PostCreate(@RequestBody note note) {
-        s.save(note);
+    public String PostCreate(@RequestParam String title,@RequestParam String content) {
+        n.setTitle(title);
+        n.setContent(content);
+        s.save(n);
         return "redirect:/index";
     }
 
@@ -44,7 +48,7 @@ public class noteController {
 
     //Update Page************************************
     @GetMapping("/update")
-    public String update(ModelMap map, @RequestParam int id){
+    public String update(){
         return "update";
     }
 
@@ -55,7 +59,7 @@ public class noteController {
             map.put("error", "Note Not Exist");
             return "index";
         }else{
-            note n=new note();
+            note n=s.getById(id);
             n.setTitle(title);
             n.setContent(content);
             s.save(n);
@@ -64,12 +68,12 @@ public class noteController {
     }
 
     //DeletePage ***********************************
-    @GetMapping("/deleteById")
-    public String deleteById(@RequestParam int id){
+    @GetMapping("/delete")
+    public String deleteById(){
         return "delete";
     }
 
-    @PostMapping("/deleteById")
+    @PostMapping("/delete")
     public String deleteById(ModelMap map,@RequestParam Long id){
         boolean noteExist=s.exist(id);
         if(!noteExist) {
